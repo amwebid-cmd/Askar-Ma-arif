@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Profesional Saya</title>
+    <!-- Menggunakan Font Awesome untuk Ikon (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABEL WARNA & SETTINGAN DASAR --- */
+        :root {
+            --primary-color: #0e75b1; /* Biru Utama */
+            --secondary-color: #156ea1; /* Biru Gelap */
+            --accent-color: #548faa;
+            --bg-light: #01040c;
+            --text-dark: #859c94;
+            --text-gray: #8ea5a1;
+            --white: #0d5336;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            background-image: url('beranda.jpg');
+            background-size: cover;
+            background-position: center;
+            padding-top: 80px; /* Offset untuk navbar fixed */
+        }
+
+        .hero-content img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .hero-content span {
+            color: var(--primary-color);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- PROFIL / ABOUT --- */
+        .about-container {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* --- KETERAMPILAN (SKILLS) --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* --- PENGALAMAN (EXPERIENCE) --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- KONTAK --- */
+        .contact {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            color: var(--white);
+            transition: color 0.3s;
+        }
+
+        .social-icon:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #866419;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Navigasi sederhana, bisa dikembangkan dengan JS toggle */
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGASI -->
+    <nav>
+        <div class="logo">Portofolio<span style="color:var(--text-dark)">Saya</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang Saya</a></li>
+            <li><a href="#skills">Keterampilan</a></li>
+            <li><a href="#ability">Kemampuan</a></li>
+            <li><a href="#experience">Pengalaman</a></li>
+            <li><a href="#organization-experience">pengalaman Organisasi</a></li>
+             <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <!-- GANTI DENGAN FOTO ANDA (URL Foto atau Nama File di folder sama) -->
+            <img src="profile.png" alt="Foto Profil">
+            <h1>Halo, Saya <span id="nama-display">Askar Ma'arif</span></h1>
+            <p id="tagline-display">Profesional di Bidang Teknologi Informasi perencanaan pemetaan wilayah & Gis</p>
+            <a href="#contact" class="btn">Hubungi Saya</a>
+            <a href="#experience" class="btn" style="background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); margin-left: 10px;">Lihat Pengalaman</a>
+        </div>
+    </section>
+
+    <!-- TENTANG SAYA (PROFIL) -->
+    <section id="about" style="background-color: #03080;">
+        <h2 class="section-title">Tentang Saya</h2>
+        <div class="about-container">
+            <p>
+                Saya adalah profesional yang bersikap dinamis dan memiliki kemampuan analisis yang baik. 
+                Dengan pengalaman di bidang <strong>[ perencanaan dan pemetaan GIS]</strong>, saya berfokus pada 
+                memberikan solusi terbaik dan inovasi dalam setiap proyek yang saya kerjakan. 
+                Saya senang belajar hal baru dan siap menghadapi tantangan untuk mencapai tujuan bersama.
+            </p>
+            <br>
+            <p>
+                Saat ini saya mencari peluang karier yang lebih menantang di perusahaan yang menghargai 
+                dedikasi dan kinerja, di mana saya dapat berkontribusi secara maksimal.
+            </p>
+        </div>
+    </section>
+
+    <!-- KETERAMPILAN (SKILLS) -->
+    <section id="skills" style="background-color: #03080a;">
+        <h2 class="section-title">Keterampilan</h2>
+        <div class="skills-grid">
+            <!-- Skill 1 -->
+            <div class="skill-card">
+                <i class="fa-brands fa-map"></i>
+                <h3>Penggunaan software pemetaan</h3>
+                <p>ArcGis & QGIS</p>
+            </div>
+            <!-- Skill 2 -->
+            <div class="skill-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Analisis Statistik</h3>
+                <p>fragstatas</p>
+            </div>
+            <!-- Skill 3 -->
+            <div class="skill-card">
+                <i class="fa-brands fa-microsoft"></i>
+                <h3>software office</h3>
+                <p>excel, worrd, powerpoint</p>
+            </div>
+            <!-- Skill 4 -->
+            <div class="skill-card">
+                <i class="fa-brands fa-pen-nib"></i>
+                <h3>desain grafis</h3>
+                <p>capcut, canva & inscape</p>
+            </div>
+            <!-- Skill 5 -->
+            <div class="skill-card">
+                <i class="fa-solid fa-database"></i>
+                <h3>SQL</h3>
+                <p>Manajemen Data</p>
+            </div>
+            </div>
+    </section>
+             <!-- KEMAMPUAN (ABILITY) -->
+    <section id="ability" style="background-color: #03080a;">
+        <h2 class="section-title">Kemampuan</h2>
+        <div class="skills-grid">
+            <!-- Skill 1 -->
+            <div class="skill-card">
+                <i class="fa-solid fa-people-group"></i>
+                <h3>Kerja Tim</h3>
+                <p>Kolaborasi efektif dalam tim untuk mencapai tujuan bersama.</p>
+            </div>
+            <!-- Skill 2 -->
+            <div class="skill-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Analisis Data</h3>
+                <p>Mampu menganalisis data secara mendalam dan menyusun laporan yang informatif.</p>
+            </div>
+            <!-- Skill 3 -->
+            <div class="skill-card">
+                <i class="fa-solid fa-language"></i>
+                <h3>kepemimpinan</h3>
+                <p>Mampu memimpin tim dan mengelola proyek dengan efektif.</p>
+            </div>
+            <!-- Skill 4 -->
+            <div class="skill-card">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <h3>komunikasi</h3>
+                <p>Mampu menyampaikan ide dan informasi dengan jelas dan persuasif.</p>
+                </div>
+            <!-- Skill 5 -->
+            <div class="skill-card">
+                <i class="fa-solid fa-lightbulb"></i>
+                <h3>administrasi</h3>
+                <p>Mampu mengelola administrasi dengan baik dan efisien.</p>
+            </div>
+            </div>
+    </section>
+
+    <!-- PENGALAMAN (EXPERIENCE) -->
+    <section id="experience" style="background-color: #03080a;">
+        <h2 class="section-title">Pengalaman Kerja</h2>
+        <div class="timeline">
+            
+            <!-- Pengalaman 1 -->
+            <div class="timeline-item">
+                <span class="timeline-date">PEMATERI 2026</span>
+                <h3 class="timeline-title">analisis pola deforestasi menggunakan software ArcGis & Fragstats</h3>
+                <span class="timeline-company"></span>geogis</span>
+                <p>
+                </div>
+            <!-- Pengalaman 2 -->
+            <div class="timeline-item">
+                <span class="timeline-date"> SURVEYOR 2026</span>
+                <h3 class="timeline-title">feasibility study dan rencana tekhnis program pemulihan aset berbasis alam</h3>
+                <span class="timeline-company"></span>RHL</span>
+                <p>
+                </div>
+             <!-- Pengalaman 4 -->
+            <div class="timeline-item">
+                <span class="timeline-date"> TIM TEKHINIS & TIM LAPANGAN 2025</span>
+                <h3 class="timeline-title">integratetd aren defelopmen berbasis aren sebagai tanaman unggulan kabupaten Maros</h3>
+                <span class="timeline-company"></span>pengabdian wilayah</span>
+                <p>
+                </div>
+            <!-- Pengalaman 5 -->
+            <div class="timeline-item">
+                <span class="timeline-date"> ASSISTEN DOSEN 2025</span>
+                <h3 class="timeline-title">GiS|Geografis Information System|</h3>
+                <span class="timeline-company"></span>Mata kulih kehutanan</span>
+                <p>  
+                </div>
+            <!-- Pengalaman 6 -->
+            <div class="timeline-item">
+                <span class="timeline-date"> MAGANG 2024</span>
+                <h3 class="timeline-title">produksi & perawatan bibit</h3>
+                <span class="timeline-company"></span>BPTH Wilayah 2 sulawesi</span>
+                <p>  
+                </div>
+            <!-- Pengalaman 7 -->
+            <div class="timeline-item">
+                <span class="timeline-date">SURVEYOR 2024</span>
+                <h3 class="timeline-title">kinerja bupati maros</h3>
+                <span class="timeline-company"></span>tim survey</span>
+                <p> 
+                </div>
+    <!--pengalaman organisasi-->
+        <section id="organization-experience" style="background-color: #03080a;">
+            <h2 class="section-title">Pengalaman Organisasi</h2>
+            <div class="timeline">
+                <!-- Pengalaman 1 -->
+                <div class="timeline-item">
+                    <span class="timeline-date">2023-2024</span>
+                    <h3 class="timeline-title">Sekertaris umum </h3>
+                    <span class="timeline-company"></span>Himasyilva universitas Muslim Maros</span>
+                    <p>
+            </div>
+                <!-- Pengalaman 2 -->
+                <div class="timeline-item">
+                    <span class="timeline-date">2022-2023</span>
+                    <h3 class="timeline-title">Ketua Divisi Kemahasiswaan</h3>
+                    <span class="timeline-company"></span>Himasyilva universitas Muslim Maros</span>
+                    <p>
+        </section>
+
+     <!-- Kontak -->
+      <section id="contact" style="background-color: #03080a;">
+        <h2 class="section-title">Kontak</h2>
+        <div class="contact-container">
+          <div class="contact-info">
+                <h3>Informasi Kontak</h3>
+                <p><i class="fa-solid fa-envelope"></i> maarifaskar70@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> +62 822 9036 9200</p>
+                <p><i class="fa-solid fa-map-marker-alt"></i> Jl. poros maros bone, Dusun pattiro, Desa labuaja, Kecamtan Cenrana, Kabupaten Maros, sulawesi Selatan</p>
+          </div>
+         
